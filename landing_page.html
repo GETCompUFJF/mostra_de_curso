@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciência da Computação - UFJF | Feira de Profissões</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração de cores personalizadas no Tailwind inspirada no GETComp -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        getcomp: {
+                            purple: '#7c3aed',
+                            violet: '#8b5cf6',
+                            indigo: '#4f46e5',
+                            dark: '#0d0b18',
+                            card: '#16122b',
+                            accent: '#06b6d4',
+                            emerald: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0816;
+            color: #f1f5f9;
+        }
+        .glass-card {
+            background: rgba(22, 18, 43, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+        }
+        .glass-nav {
+            background: rgba(11, 8, 22, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4, transparent);
+            border-radius: 1.05rem;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-purple-600 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav px-4 py-3">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-purple-700 to-indigo-600 text-white p-2 rounded-xl shadow-lg shadow-purple-600/30 flex items-center justify-center font-bold text-lg w-10 h-10">
+                    <i class="fa-solid font-mono fa-code"></i>
+                </div>
+                <div>
+                    <span class="text-xs tracking-widest text-purple-400 font-bold uppercase block leading-none">UFJF</span>
+                    <span class="font-bold text-sm text-slate-100">Ciência da Computação</span>
+                </div>
+            </div>
+            <a href="#quiz" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold py-2 px-3.5 rounded-full transition-all duration-200 shadow-md shadow-purple-600/30 active:scale-95">
+                Faça o Quiz <i class="fa-solid fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="pt-20 pb-12 px-4 max-w-4xl mx-auto space-y-12">
+
+        <!-- Hero Section -->
+        <section class="pt-4 text-center space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-300 text-xs font-medium mb-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Feira de Profissões UFJF
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                Ciência da Computação <br/>
+                <span class="gradient-text">Do Código ao Futuro</span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-normal leading-relaxed">
+                Muito além de escrever linhas de código: aprenda a resolver problemas complexos da sociedade usando inteligência artificial, dados e inovação.
+            </p>
+
+            <!-- Quick Action Cards -->
+            <div class="grid grid-cols-2 gap-3 pt-2 max-w-md mx-auto text-left">
+                <div class="glass-card p-3.5 rounded-2xl border border-purple-500/20 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-900/50 text-purple-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400">Grau</div>
+                        <div class="font-semibold text-sm text-white">Bacharelado</div>
+                    </div>
+                </div>
+                <div class="glass-card p-3.5 rounded-2xl border border-purple-500/20 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-900/50 text-indigo-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-clock text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400">Duração</div>
+                        <div class="font-semibold text-sm text-white">8 Semestres</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Quiz Section -->
+        <!-- Alteração: Atualizado o texto descritivo de 3 para 5 perguntas -->
+        <section id="quiz" class="gradient-border bg-slate-950/90 p-5 sm:p-8 shadow-2xl relative overflow-hidden scroll-mt-24">
+            <div class="text-center space-y-2 mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Interativo</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Descubra seu Perfil na Computação</h2>
+                <p class="text-xs sm:text-sm text-slate-400">Responda 5 perguntas rápidas e veja qual área mais combina com você!</p>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Question 1 -->
+                <!-- Alteração: Substituída a pergunta 1 e suas alternativas para refletir a nova lista, ajustando barra de progresso -->
+                <div id="q1" class="quiz-step space-y-4">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+                        <span>QUESTÃO 1 DE 5</span>
+                        <span>20%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-600 to-cyan-400 h-full w-1/5 rounded-full"></div>
+                    </div>
+                    <h3 class="font-semibold text-slate-100 text-base">Como você costuma lidar com um problema difícil?</h3>
+                    <div class="space-y-2.5 pt-1">
+                        <button onclick="selectAnswer('q1', 'a')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            Gosto de seguir um plano lógico e construir a solução passo a passo.
+                        </button>
+                        <button onclick="selectAnswer('q1', 'b')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            Caço padrões e analiso o cenário para prever os próximos passos.
+                        </button>
+                        <button onclick="selectAnswer('q1', 'c')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">C</span>
+                            Testo hipóteses e tento encontrar falhas no problema.
+                        </button>
+                        <button onclick="selectAnswer('q1', 'd')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">D</span>
+                            Imagino a solução na minha cabeça e uso criatividade para executar.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <!-- Alteração: Substituída a pergunta 2 e suas alternativas, adicionada 4ª opção e ajustada barra de progresso -->
+                <div id="q2" class="quiz-step space-y-4 hidden">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+                        <span>QUESTÃO 2 DE 5</span>
+                        <span>40%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-600 to-cyan-400 h-full w-2/5 rounded-full"></div>
+                    </div>
+                    <h3 class="font-semibold text-slate-100 text-base">Como seria a sua rotina de trabalho dos sonhos?</h3>
+                    <div class="space-y-2.5 pt-1">
+                        <button onclick="selectAnswer('q2', 'a')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            Com rotina rígida e clara.
+                        </button>
+                        <button onclick="selectAnswer('q2', 'b')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            Uma adrenalina diária, lidando com novos desafios.
+                        </button>
+                        <button onclick="selectAnswer('q2', 'c')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">C</span>
+                            Investigativa, sempre com novos projetos e coisas para testar.
+                        </button>
+                        <button onclick="selectAnswer('q2', 'd')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">D</span>
+                            Mão na massa, idealizando e criando.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <!-- Alteração: Substituída a pergunta 3 original pela nova questão 3, ajustada barra de progresso -->
+                <div id="q3" class="quiz-step space-y-4 hidden">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+                        <span>QUESTÃO 3 DE 5</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-600 to-cyan-400 h-full w-3/5 rounded-full"></div>
+                    </div>
+                    <h3 class="font-semibold text-slate-100 text-base">Qual é o seu maior "defeito" na hora de fazer um projeto?</h3>
+                    <div class="space-y-2.5 pt-1">
+                        <button onclick="selectAnswer('q3', 'a')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            Sou meio paranoico(a).
+                        </button>
+                        <button onclick="selectAnswer('q3', 'b')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            Sou detalhista de mais.
+                        </button>
+                        <button onclick="selectAnswer('q3', 'c')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">C</span>
+                            Sou perfeccionista ao extremo.
+                        </button>
+                        <button onclick="selectAnswer('q3', 'd')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">D</span>
+                            Sou impulsivo(a).
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <!-- Alteração: Adicionada a nova pergunta 4, configurada barra de progresso -->
+                <div id="q4" class="quiz-step space-y-4 hidden">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+                        <span>QUESTÃO 4 DE 5</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-600 to-cyan-400 h-full w-4/5 rounded-full"></div>
+                    </div>
+                    <h3 class="font-semibold text-slate-100 text-base">No trabalho em grupo da escola, quem é você?</h3>
+                    <div class="space-y-2.5 pt-1">
+                        <button onclick="selectAnswer('q4', 'a')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            O que organiza as tarefas, escreve a estrutura e junta tudo no final.
+                        </button>
+                        <button onclick="selectAnswer('q4', 'b')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            O que revisa o trabalho caçando erros.
+                        </button>
+                        <button onclick="selectAnswer('q4', 'c')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">C</span>
+                            O que pega aquele monte de informação solta e tira as melhores conclusões.
+                        </button>
+                        <button onclick="selectAnswer('q4', 'd')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">D</span>
+                            O que deixa os slides incríveis para garantir que a apresentação chame atenção.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <!-- Alteração: Adicionada a nova pergunta 5 (utilizada como desempate), configurada barra de progresso -->
+                <div id="q5" class="quiz-step space-y-4 hidden">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+                        <span>QUESTÃO 5 DE 5</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-600 to-cyan-400 h-full w-full rounded-full"></div>
+                    </div>
+                    <h3 class="font-semibold text-slate-100 text-base">O que mais chama sua atenção no mundo da tecnologia?</h3>
+                    <div class="space-y-2.5 pt-1">
+                        <button onclick="selectAnswer('q5', 'a')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            Como a Inteligência Artificial aprende e toma decisões sozinha.
+                        </button>
+                        <button onclick="selectAnswer('q5', 'b')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            Como funcionam as redes sociais.
+                        </button>
+                        <button onclick="selectAnswer('q5', 'c')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">C</span>
+                            Como os jogos modernos fazem seus gráficos.
+                        </button>
+                        <button onclick="selectAnswer('q5', 'd')" class="w-full text-left p-3.5 rounded-xl bg-slate-900/80 hover:bg-purple-950/60 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-sm transition-all flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0">D</span>
+                            Como hackers invadem sistemas.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Box -->
+                <div id="quiz-result" class="hidden text-center space-y-4 py-2">
+                    <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-purple-500/40">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase text-purple-400 font-bold tracking-wider">Seu Perfil Ideal</span>
+                        <!-- Alteração: Removido o título estático para injetar via JS dinamicamente -->
+                        <h3 id="result-title" class="text-xl font-bold text-white mt-1"></h3>
+                    </div>
+                    <!-- Alteração: Removida a descrição estática para injetar via JS dinamicamente -->
+                    <p id="result-desc" class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed"></p>
+                    <div class="pt-2">
+                        <button onclick="resetQuiz()" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+                            <i class="fa-solid fa-rotate-left"></i> Refazer o teste
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perfil do Cientista -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2 text-purple-400 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-brain"></i> Diferencial da Formação
+            </div>
+            <h2 class="text-2xl font-bold text-white">O Perfil do Cientista na UFJF</h2>
+            
+            <div class="glass-card p-5 sm:p-6 rounded-2xl border border-slate-800 space-y-4">
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Não formamos apenas programadores, mas <strong class="text-purple-400 font-semibold">Cientistas da Computação</strong>. Isso significa que você não aprende apenas a usar as ferramentas de hoje, mas adquire a base matemática e lógica para criar as tecnologias do amanhã.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                    <div class="bg-slate-900/90 p-3.5 rounded-xl border border-purple-500/20 space-y-1.5">
+                        <i class="fa-solid fa-puzzle-piece text-purple-400 text-base"></i>
+                        <h4 class="font-semibold text-xs text-white">Raciocínio Abstrato</h4>
+                        <p class="text-xs text-slate-400">Capacidade de estruturar e resolver problemas complexos com elegância.</p>
+                    </div>
+                    <div class="bg-slate-900/90 p-3.5 rounded-xl border border-purple-500/20 space-y-1.5">
+                        <i class="fa-solid fa-network-wired text-cyan-400 text-base"></i>
+                        <h4 class="font-semibold text-xs text-white">Interdisciplinaridade</h4>
+                        <p class="text-xs text-slate-400">Aplicação da computação na medicina, biologia, engenharias e artes.</p>
+                    </div>
+                    <div class="bg-slate-900/90 p-3.5 rounded-xl border border-purple-500/20 space-y-1.5">
+                        <i class="fa-solid fa-lightbulb text-indigo-400 text-base"></i>
+                        <h4 class="font-semibold text-xs text-white">Visão de Inovação</h4>
+                        <p class="text-xs text-slate-400">Preparo para liderar projetos, empreender e ingressar em pós-graduações.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Percurso Curricular -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2 text-purple-400 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-route"></i> Grade Curricular (PPC 2023)
+            </div>
+            <h2 class="text-2xl font-bold text-white">O Que Você Aprende Aqui?</h2>
+            <p class="text-xs sm:text-sm text-slate-400">Uma jornada estruturada do zero até a especialização:</p>
+
+            <div class="space-y-3">
+                <!-- Etapa 1 -->
+                <div class="glass-card p-4 rounded-2xl border-l-4 border-l-purple-500 flex flex-col sm:flex-row gap-3 items-start">
+                    <div class="bg-purple-950 text-purple-300 font-mono font-bold text-xs px-2.5 py-1 rounded-lg shrink-0">
+                        FASE 1: INÍCIO
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-white">Fundamentos de Computação & Lógica</h3>
+                        <p class="text-xs text-slate-300 mt-1">
+                            Algoritmos, Estrutura de Dados, Lógica Matemática, Programação Orientada a Objetos e Desenvolvimento Web.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Etapa 2 -->
+                <div class="glass-card p-4 rounded-2xl border-l-4 border-l-indigo-500 flex flex-col sm:flex-row gap-3 items-start">
+                    <div class="bg-indigo-950 text-indigo-300 font-mono font-bold text-xs px-2.5 py-1 rounded-lg shrink-0">
+                        FASE 2: MEIO
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-white">Engenharia de Sistemas & Redes</h3>
+                        <p class="text-xs text-slate-300 mt-1">
+                            Engenharia de Software, Bancos de Dados, Sistemas Operacionais, Redes de Computadores e Arquitetura de Processadores.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Etapa 3 -->
+                <div class="glass-card p-4 rounded-2xl border-l-4 border-l-cyan-500 flex flex-col sm:flex-row gap-3 items-start">
+                    <div class="bg-cyan-950 text-cyan-300 font-mono font-bold text-xs px-2.5 py-1 rounded-lg shrink-0">
+                        FASE 3: FIM
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-white">Especialização & Fronteira da Tecnologia</h3>
+                        <p class="text-xs text-slate-300 mt-1">
+                            Inteligência Artificial, Computação Gráfica, Pesquisa Operacional, Segurança da Informação e TCC com orientação individual.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interativo: Demonstração de Código -->
+        <section class="glass-card p-5 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                    <span class="text-xs text-slate-400 font-mono ml-2">demo_algoritmo.py</span>
+                </div>
+                <span class="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded font-mono border border-purple-800/40">Experimente no estande</span>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl code-font text-xs space-y-2 border border-slate-800">
+                <div class="text-slate-500"># Altere a variável para ver o efeito:</div>
+                <div class="text-slate-200">
+                    <span class="text-purple-400">estudante</span> = <span class="text-green-300">"Você"</span>
+                </div>
+                <div class="text-slate-200">
+                    <span class="text-purple-400">curso</span> = <span class="text-green-300">"Ciência da Computação UFJF"</span>
+                </div>
+                <div class="text-slate-200">
+                    <span class="text-cyan-400">if</span> <span class="text-purple-400">estudante</span> == <span class="text-green-300">"Você"</span>:
+                </div>
+                <div class="text-slate-200 pl-4">
+                    <span class="text-yellow-300">print</span>(<span class="text-green-300">f"Bem-vindo(a) ao futuro da tecnologia!"</span>)
+                </div>
+            </div>
+            
+            <p class="text-xs text-slate-400 text-center">
+                💡 No estande da UFJF, nossos alunos te mostram como modificar códigos e criar seus próprios jogos em tempo real!
+            </p>
+        </section>
+
+        <!-- Oportunidades & Extensão -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2 text-purple-400 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-rocket"></i> Além da Sala de Aula
+            </div>
+            <h2 class="text-2xl font-bold text-white">Oportunidades no DCC / UFJF</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="glass-card p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="text-purple-400 text-xl"><i class="fa-solid fa-trophy"></i></div>
+                    <h3 class="font-bold text-sm text-white">Maratona de Programação</h3>
+                    <p class="text-xs text-slate-400">Treine suas habilidades resolvendo desafios de alta velocidade e participe de competições nacionais e internacionais.</p>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="text-cyan-400 text-xl"><i class="fa-solid fa-flask"></i></div>
+                    <h3 class="font-bold text-sm text-white">Iniciação Científica</h3>
+                    <p class="text-xs text-slate-400">Bolsas de pesquisa para desenvolver soluções em Inteligência Artificial, Robótica e Computação Aplicada desde a graduação.</p>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="text-indigo-400 text-xl"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3 class="font-bold text-sm text-white">Projetos de Extensão & GETComp</h3>
+                    <p class="text-xs text-slate-400">Grupo de Educação Tutorial e programas de extensão focados no ensino, pesquisa e impacto direto na comunidade.</p>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="text-emerald-400 text-xl"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="font-bold text-sm text-white">Empreendedorismo & Empresas</h3>
+                    <p class="text-xs text-slate-400">Ambiente propício para transformar ideias de TCC em startups e conexão direta com o mercado corporativo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mercado de Trabalho -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2 text-purple-400 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-briefcase"></i> Onde Trabalhar?
+            </div>
+            <h2 class="text-2xl font-bold text-white">Carreira e Mercado</h2>
+
+            <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3">
+                <p class="text-xs sm:text-sm text-slate-300">
+                    Profissionais formados na UFJF atuam em Big Techs no Brasil e no exterior, institutos de pesquisa e empresas de alta tecnologia.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1">
+                    <span class="bg-purple-950 text-purple-300 text-xs px-3 py-1 rounded-full border border-purple-800/40">Desenvolvedor de Software</span>
+                    <span class="bg-cyan-950 text-cyan-300 text-xs px-3 py-1 rounded-full border border-cyan-800/40">Cientista de Dados / IA</span>
+                    <span class="bg-indigo-950 text-indigo-300 text-xs px-3 py-1 rounded-full border border-indigo-800/40">Analista de Cybersegurança</span>
+                    <span class="bg-violet-950 text-violet-300 text-xs px-3 py-1 rounded-full border border-violet-800/40">Especialista em Computação Visual</span>
+                    <span class="bg-emerald-950 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-800/40">Pesquisador Acadêmico</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA & Links -->
+        <section class="text-center space-y-4 pt-4 border-t border-slate-800">
+            <h2 class="text-xl font-bold text-white">Fale com Nossos Alunos no Estande!</h2>
+            <p class="text-xs text-slate-400 max-w-sm mx-auto">Tire todas as suas dúvidas sobre o vestibular, PISM, grade horária e a vida universitária no campus da UFJF.</p>
+            
+            <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 pt-2">
+                <a href="https://www2.ufjf.br/cursocomputacao/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold py-3 px-5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-600/30">
+                    <i class="fa-solid fa-globe"></i> Site do Curso
+                </a>
+                <a href="https://www2.ufjf.br/getcomp/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold py-3 px-5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-600/30">
+                    <i class="fa-solid fa-users font-mono"></i> GETComp (Grupo Tutorial)
+                </a>
+                <a href="https://www2.ufjf.br/deptocomputacao/cursos-de-graduacao/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold py-3 px-5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
+                    <i class="fa-solid fa-layer-group"></i> Outros Cursos do DCC
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-6 text-center text-xs text-slate-500 px-4 space-y-3">
+        <p>Departamento de Ciência da Computação — DCC / UFJF</p>
+        
+        <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400 pt-1">
+            <a href="https://www2.ufjf.br/getcomp/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-graduation-cap"></i> GETComp
+            </a>
+            <span class="text-slate-700">•</span>
+            <a href="https://www2.ufjf.br/deptocomputacao/cursos-de-graduacao/" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-list-check"></i> Cursos de Graduação do DCC
+            </a>
+            <span class="text-slate-700">•</span>
+            <a href="https://www2.ufjf.br/cursocomputacao/" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-link"></i> Portal Oficial
+            </a>
+        </div>
+
+        <p class="text-[11px] text-slate-600 pt-2">Feira de Profissões UFJF — Campus Juiz de Fora</p>
+    </footer>
+
+    <!-- Quiz Script Logic -->
+    <script>
+        // Alteração: Objeto modificado para armazenar as 5 perguntas
+        const quizAnswers = { q1: '', q2: '', q3: '', q4: '', q5: '' };
+
+        function selectAnswer(questionId, value) {
+            quizAnswers[questionId] = value;
+            
+            document.getElementById(questionId).classList.add('hidden');
+
+            // Alteração: Lógica de transição adaptada para ir até a pergunta 5
+            if (questionId === 'q1') {
+                document.getElementById('q2').classList.remove('hidden');
+            } else if (questionId === 'q2') {
+                document.getElementById('q3').classList.remove('hidden');
+            } else if (questionId === 'q3') {
+                document.getElementById('q4').classList.remove('hidden');
+            } else if (questionId === 'q4') {
+                document.getElementById('q5').classList.remove('hidden');
+            } else if (questionId === 'q5') {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('q5').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden');
+
+            // Alteração: Adicionado contador de pontos para as 4 áreas novas
+            const scores = { dev: 0, dados: 0, visual: 0, seg: 0 };
+            
+            // Alteração: Matriz de pontuação mapeando Perguntas(1 a 5) -> Alternativas(a,b,c,d) -> Pontos(Áreas)
+            const scoringMatrix = {
+                q1: {
+                    a: { dev: 3, dados: 2, visual: 1, seg: 0 },
+                    b: { dados: 3, seg: 2, dev: 1, visual: 0 },
+                    c: { seg: 3, dev: 2, visual: 1, dados: 0 },
+                    d: { visual: 3, dados: 2, seg: 1, dev: 0 }
+                },
+                q2: {
+                    a: { dev: 3, visual: 2, dados: 1, seg: 0 },
+                    b: { seg: 3, dados: 2, dev: 1, visual: 0 },
+                    c: { dados: 3, seg: 2, dev: 1, visual: 0 },
+                    d: { visual: 3, dev: 2, dados: 1, seg: 0 }
+                },
+                q3: {
+                    a: { seg: 3, dados: 2, dev: 1, visual: 0 },
+                    b: { dados: 3, seg: 2, visual: 1, dev: 0 },
+                    c: { dev: 3, visual: 2, seg: 1, dados: 0 },
+                    d: { visual: 3, dev: 2, dados: 1, seg: 0 }
+                },
+                q4: {
+                    a: { dev: 3, dados: 2, visual: 1, seg: 0 },
+                    b: { seg: 3, dev: 2, dados: 1, visual: 0 },
+                    c: { dados: 3, seg: 2, dev: 1, visual: 0 },
+                    d: { visual: 3, dev: 2, seg: 1, dados: 0 }
+                },
+                q5: {
+                    // Alteração: Adicionado +0.1 na área principal escolhida na última questão para aplicar a regra de desempate
+                    a: { dados: 3.1, dev: 2, visual: 1, seg: 0 },
+                    b: { dev: 3.1, visual: 2, seg: 1, dados: 0 },
+                    c: { visual: 3.1, dev: 2, dados: 1, seg: 0 },
+                    d: { seg: 3.1, dados: 2, dev: 1, visual: 0 }
+                }
+            };
+
+            // Alteração: Cálculo de pontos baseados na matriz
+            for (let q in quizAnswers) {
+                let answer = quizAnswers[q];
+                scores.dev += scoringMatrix[q][answer].dev;
+                scores.dados += scoringMatrix[q][answer].dados;
+                scores.visual += scoringMatrix[q][answer].visual;
+                scores.seg += scoringMatrix[q][answer].seg;
+            }
+
+            // Alteração: Identifica o vencedor pegando o maior valor de pontuação
+            let winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+            const titleEl = document.getElementById('result-title');
+            const descEl = document.getElementById('result-desc');
+
+            // Alteração: Adicionados os novos textos de conclusão de cada área solicitada
+            if (winner === 'dev') {
+                titleEl.textContent = 'Desenvolvedor 💻';
+                descEl.textContent = 'Você tem uma grande inclinação para ser desenvolvedor de software! Uma área que exige organização, metodologia e foco para implementar sistemas complexos. No DCC/UFJF você verá mais disso em Desenvolvimento Web e Engenharia de Software.';
+            } else if (winner === 'dados') {
+                titleEl.textContent = 'Cientista de Dados 📊';
+                descEl.textContent = 'Você tem uma grande inclinação para ser cientista de dados! Uma área que exige entendimento matemático e lógico para fazer o computador tomar decisões. No DCC/UFJF você verá mais disso em Inteligência Artificial e Pesquisa Operacional.';
+            } else if (winner === 'visual') {
+                titleEl.textContent = 'Computação Visual 🎨';
+                descEl.textContent = 'Você tem uma grande inclinação para computação visual! Uma área que exige conciliar noções artísticas e conhecimento em programação e matemática. No DCC/UFJF você verá mais disso em Computação Gráfica e Interação Humano-Computador.';
+            } else if (winner === 'seg') {
+                titleEl.textContent = 'Segurança 🛡️';
+                descEl.textContent = 'Você tem uma grande inclinação para segurança! Uma área que exige atenção aos detalhes e entendimento profundo dos sistemas. No DCC/UFJF você verá mais disso em Segurança em Sistemas de Computação e Redes de Computadores.';
+            }
+        }
+
+        function resetQuiz() {
+            // Alteração: Reset para incluir todas as 5 questões
+            quizAnswers.q1 = '';
+            quizAnswers.q2 = '';
+            quizAnswers.q3 = '';
+            quizAnswers.q4 = '';
+            quizAnswers.q5 = '';
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('q1').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
